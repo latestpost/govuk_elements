@@ -201,6 +201,64 @@ module.exports = {
       res.render('examples/example_form_validation_multiple_questions', {'assetPath' : assetPath, 'section': section, 'section_name' : section_name, 'page_name' : page_name, 'fullName': fullName, 'niNo': niNo, 'error': error});
     });
 
+    // Star wars questionaire test
+    app.get('/form/starwars', function (req, res) {
+      var section = "Test";
+      var section_name = "Forms";
+      var page_name = "Example: Form Starwars Questions";
+      res.render('examples/form_starwars', {'assetPath' : assetPath, 'section': section, 'section_name' : section_name, 'page_name' : page_name });
+    });
+
+    app.post('/form/starwars', function (req, res) {
+      var section = "Test";
+      var section_name = "Forms";
+      var page_name = "Example: Form Starwars Questions";
+
+      console.log(req.body);
+      var formInput=req.body;
+
+      /* TODO validation
+      var error = false;
+      if (!fullName || !niNo) {
+        error = true;
+      } else {
+        error = false;
+      }
+      */
+      var question1=req.body.question1;
+      var question2=req.body.question2;
+      var question3=req.body.question3;
+      var question4=req.body.question4
+
+      error = false;
+
+      if (!error){
+        var mongoose = require('mongoose');
+        mongoose.connect('mongodb://localhost');
+        var db = mongoose.connection;
+        db.on('error', console.error.bind(console, 'connection error:'));
+        db.once('open', function() {
+          var questionSchema = mongoose.Schema({
+              question1: String
+          });
+          var Question = mongoose.model('questions', questionSchema);
+          var Form = new Question({ question1: question1 })
+          Form.save(function (err, result) {
+            if (err) return console.error(err);
+            //mongoose.disconnect();
+          });
+
+          // we're connected!
+        });
+
+        res.render('examples/form_starwars_complete', {'assetPath' : assetPath, 'section': section, 'section_name' : section_name, 'page_name' : page_name, 'question1':question1,'question2':question2,'question3':question3,'question4':question4,'error': error});
+        return true;
+      }
+
+
+      res.render('examples/form_starwars', {'assetPath' : assetPath, 'section': section, 'section_name' : section_name, 'page_name' : page_name, 'error': error});
+    });
+
     // Redirect examples from /examples/ to /section/example-name-of-example
     app.get('/examples/form-validation-multiple-questions', function (req, res) {
       res.redirect('/errors/example-form-validation-multiple-questions');

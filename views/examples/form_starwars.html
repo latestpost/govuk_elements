@@ -1,0 +1,135 @@
+{{<layout_example}}
+
+{{$pageTitle}}Example: Form validation — Errors — GOV.UK elements{{/pageTitle}}
+
+{{$content}}
+<main class="js-error-example" id="content" role="main">
+
+  {{>breadcrumb}}
+
+  <form method="post" action="/form/starwars">
+    {{#error}}
+    <div class="error-summary" role="group" aria-labelledby="error-summary-heading" tabindex="-1">
+
+      <h1 class="heading-medium error-summary-heading" id="error-summary-heading">
+        Message to alert the user to a problem goes here
+      </h1>
+
+      <p>
+        Optional description of the error(s) and how to correct them
+      </p>
+
+      <ul class="error-summary-list">
+        {{^fullName}}
+        <li><a href="#example-full-name">Descriptive link to the question with an error</a></li>
+        {{/fullName}}
+        {{^niNo}}
+        <li><a href="#example-ni-number">Descriptive link to the question with an error</a></li>
+        {{/niNo}}
+      </ul>
+
+    </div>
+    {{/error}}
+
+    <h1 class="heading-large">
+      Star Wars Questionnaire
+    </h1>
+
+    <div class="form-group {{#error}}{{^fullName}}error{{/fullName}}{{/error}}">
+
+      <label for="example-full-name" {{#error}}{{^fullName}}id="error-full-name"{{/fullName}}{{/error}}>
+
+        <span class="form-label-bold">Film</span>
+        <span class="form-hint">What is your favourite Star Wars film?</span>
+        {{#error}}
+          {{^fullName}}
+          <span class="error-message" id="error-message-full-name">Error message about film question goes here</span>
+          {{/fullName}}
+        {{/error}}
+
+      </label>
+
+      <input class="form-control" id="example-full-name" type="text" name="question1" value="{{question1}}" {{#error}}{{^fullName}}aria-describedby="error-message-full-name"{{/fullName}}{{/error}}>
+
+      <fieldset>
+              <br/>
+        <label for="example-full-name" {{#error}}{{^fullName}}id="error-full-name"{{/fullName}}{{/error}}>
+
+          <span class="form-label-bold">Characters</span>
+          <span class="form-hint">Which of these characters are from the Star Wars universe?</span>
+          {{#error}}
+            {{^fullName}}
+            <span class="error-message" id="error-message-full-name">Error message about film characters goes here</span>
+            {{/fullName}}
+          {{/error}}
+
+        </label>
+
+        <label class="block-label" for="character-name-1">
+          <input id="character-name-1" name="question2" type="checkbox" value="Spock">
+          Spock
+        </label>
+        <label class="block-label" for="character-name-2">
+          <input id="character-name-2" name="question2" type="checkbox" value="Darth Vader">
+          Darth Vader
+        </label>
+        <label class="block-label" for="character-name-3">
+          <input id="character-name-3" name="question2" type="checkbox" value="Captain Kirk">
+          Captain Kirk
+        </label>
+        <label class="block-label" for="character-name-4">
+          <input id="character-name-4" name="question2" type="checkbox" value="Luke Skywalker">
+          Luke Skywalker
+        </label>
+        <label class="block-label" for="character-name-5">
+          <input id="character-name-5" name="question2" type="checkbox" value="Rey Mysterio">
+          Rey Mysterio
+        </label>
+
+      </fieldset>
+      <br/>
+      <fieldset class="inline">
+
+        <label for="example-full-name" {{#error}}{{^fullName}}id="error-full-name"{{/fullName}}{{/error}}>
+
+          <span class="form-label-bold">Rey's parents</span>
+          <span class="form-hint">Do you know who Rey’s parents are?</span>
+          {{#error}}
+            {{^fullName}}
+            <span class="error-message" id="error-message-full-name">ERROR?</span>
+            {{/fullName}}
+          {{/error}}
+
+        </label>
+        <div class="form-group">
+
+          <label class="block-label" data-target="example-ni-no" for="radio-indent-1">
+            <input id="question3" type="radio" name="question3" value="Yes">
+            Yes
+          </label>
+
+          <label class="block-label" for="radio-indent-2">
+            <input id="question3" type="radio" name="question3" value="No">
+            No
+          </label>
+
+          <div class="panel panel-border-narrow js-hidden" id="example-ni-no">
+            <label class="form-label" for="national-insurance">Who are Rey's parents?</label>
+            <input class="form-control" name="question4" type="text" id="national-insurance">
+          </div>
+
+        </div>
+
+      </fieldset>
+
+    </div>
+
+
+    <input class="button" type="submit" value="Continue">
+
+  </form>
+
+</main>
+{{/content}}
+
+{{/layout_example}}
