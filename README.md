@@ -29,7 +29,6 @@ Which of these characters are from the Star Wars universe?  (checkbox)
 Do you know who Rey’s parents are?  (radio - when yes is selected show the question below)
 -           Yes
 -           No
-
 -           Who are Rey’s parents? (input text)
 
 Submit (button)
@@ -37,8 +36,8 @@ Submit (button)
 30 mins research into existing repository
 
 ## Plan
-Setup local repo by forking
-Create basic form as required
-Install mongoose
-Capture form and submit to mongoose
-Show captured details on page
+- Setup local repo by forking
+- Create basic form as required
+- Install mongoose
+- Capture form and submit to mongoose
+- Show captured details on page
