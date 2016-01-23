@@ -35,6 +35,11 @@ Submit (button)
 
 30 mins research into existing repository
 
+## Usage
+- npm install
+- node start.js
+- go to http://localhost:3000/form/starwars
+
 ## Plan
 - Setup local repo by forking
 - Create basic form as required
