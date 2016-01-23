@@ -41,3 +41,14 @@ Submit (button)
 - Install mongoose
 - Capture form and submit to mongoose
 - Show captured details on page
+
+## Actual
+- Time spent 1 hour 10 mins
+
+## Known issues
+- Mongoose connection error
+- validation not completed on back and front end
+
+## Next steps
+- validation and form tidy up
+- refactor routes.js by abstracting form logic into another class
