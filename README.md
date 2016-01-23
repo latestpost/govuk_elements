@@ -35,7 +35,10 @@ Submit (button)
 
 30 mins research into existing repository
 
+
 ## Usage
+Assumption that mongo and node is installed
+
 - npm install
 - node start.js
 - go to http://localhost:3000/form/starwars
